@@ -4,7 +4,7 @@ import Book from "./Book";
 
 class MainPage extends Component {
   render() {
-    // console.log(this.props.books);
+    console.log(this.props.books);
     return (
       <div className="list-books">
         {/* HEADER */}
@@ -20,13 +20,13 @@ class MainPage extends Component {
               <h2 className="bookshelf-title">Currently Reading</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {/* GET BOOKS IN CURRENTLY READING AND MAP THROUGH THEM TO CREATE LIs OF BOOKS IN THE CATEGORY */}
+                  {/* GET BOOKS IN THIS SECTION AND MAP THROUGH THEM TO CREATE LIs OF BOOKS IN THE CATEGORY */}
                   {this.props.books
                     .filter(book => book.shelf === "currentlyReading")
                     .map(book => (
                       <li key={book.id}>
-                        {/* BOOK */}
-                        <Book />
+                        {/* PASSING THE BOOK PROP INTO BOOK */}
+                        <Book book={book} />
                       </li>
                     ))}
                 </ol>
@@ -42,8 +42,7 @@ class MainPage extends Component {
                     .filter(book => book.shelf === "wantToRead")
                     .map(book => (
                       <li key={book.id}>
-                        {/* BOOK */}
-                        <Book />
+                        <Book book={book} />
                       </li>
                     ))}
                 </ol>
@@ -59,8 +58,7 @@ class MainPage extends Component {
                     .filter(book => book.shelf === "read")
                     .map(book => (
                       <li key={book.id}>
-                        {/* BOOK */}
-                        <Book />
+                        <Book book={book} />
                       </li>
                     ))}
                 </ol>
