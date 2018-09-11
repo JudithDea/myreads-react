@@ -25,7 +25,7 @@ class MainPage extends Component {
                     .filter(book => book.shelf === "currentlyReading")
                     .map(book => (
                       <li key={book.id}>
-                        {/* PASSING THE BOOK PROP INTO BOOK */}
+                        {/* PASSING THE BOOK PROPS INTO EACH BOOK */}
                         <Book book={book} />
                       </li>
                     ))}
