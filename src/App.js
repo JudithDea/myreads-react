@@ -1,14 +1,13 @@
 import React from "react";
 import * as BooksAPI from "./BooksAPI";
 import { Route } from "react-router-dom";
-import { Link } from "react-router-dom";
 import "./App.css";
 import SearchPage from "./SearchPage";
 import MainPage from "./MainPage";
 
 class BooksApp extends React.Component {
   state = {
-    booklist: []
+    books: []
   };
 
   // FETCHING THE BOOKS
@@ -19,12 +18,17 @@ class BooksApp extends React.Component {
   }
 
   render() {
+    // console.log(this.state.books);
     return (
       <div className="app">
+        {/* MAIN PAGE */}
+        <Route
+          exact
+          path="/"
+          render={() => <MainPage books={this.state.books} />}
+        />
         {/* SEARCH PAGE */}
         <Route path="/search" render={({ history }) => <SearchPage />} />
-        {/* MAIN PAGE */}
-        <Route exact path="/" render={() => <MainPage />} />
       </div>
     );
   }
