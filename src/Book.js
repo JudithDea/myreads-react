@@ -10,6 +10,7 @@ class Book extends Component {
             style={{
               width: 128,
               height: 193,
+              /* NOT REALLY *BACKGROUND* BUT THUMBNAIL, URL SHOULD READ LIKE: url("http://etc") */
               backgroundImage: `url("${this.props.book.imageLinks.thumbnail}")`
             }}
           />
