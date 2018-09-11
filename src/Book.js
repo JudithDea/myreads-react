@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 class Book extends Component {
   render() {
+    const { book } = this.props; /* DESTRUCTURING */
     return (
       <div className="book">
         <div className="book-top">
@@ -11,7 +12,7 @@ class Book extends Component {
               width: 128,
               height: 193,
               /* NOT REALLY *BACKGROUND* BUT THUMBNAIL, URL SHOULD READ LIKE: url("http://etc") */
-              backgroundImage: `url("${this.props.book.imageLinks.thumbnail}")`
+              backgroundImage: `url("${book.imageLinks.thumbnail}")`
             }}
           />
           <div className="book-shelf-changer">
@@ -26,8 +27,8 @@ class Book extends Component {
             </select>
           </div>
         </div>
-        <div className="book-title">{this.props.book.title}</div>
-        <div className="book-authors">{this.props.book.authors}</div>
+        <div className="book-title">{book.title}</div>
+        <div className="book-authors">{book.authors}</div>
       </div>
     );
   }
