@@ -17,6 +17,17 @@ class BooksApp extends React.Component {
     });
   }
 
+  // CREATE METHOD FOR MOVING BOOKS BETWEEN SHELVES
+  // UPDATE FUNCTION FROM STARTER CODE
+  changeShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf);
+
+    // CALL GETALL AGAIN TO REFRESH PAGE AFTER CHANGING STATE (SHELF)
+    BooksAPI.getAll().then(books => {
+      this.setState({ books });
+    });
+  };
+
   render() {
     // console.log(this.state.books);
     return (
@@ -25,7 +36,10 @@ class BooksApp extends React.Component {
         <Route
           exact
           path="/"
-          render={() => <MainPage books={this.state.books} />}
+          render={() => (
+            /* PASSING PROPS TO CHILD ELEMENT */
+            <MainPage books={this.state.books} changeShelf={this.changeShelf} />
+          )}
         />
         {/* SEARCH PAGE */}
         <Route path="/search" render={({ history }) => <SearchPage />} />

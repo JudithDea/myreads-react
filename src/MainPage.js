@@ -4,7 +4,7 @@ import Book from "./Book";
 
 class MainPage extends Component {
   render() {
-    const { books } = this.props;
+    const { books } = this.props; /* DESTRUCTURING */
     console.log(this.props.books);
     return (
       <div className="list-books">
@@ -26,8 +26,11 @@ class MainPage extends Component {
                     .filter(book => book.shelf === "currentlyReading")
                     .map(book => (
                       <li key={book.id}>
-                        {/* PASSING THE BOOK PROPS INTO EACH BOOK */}
-                        <Book book={book} />
+                        {/* PASSING PROPS TO CHILD ELEMENT */}
+                        <Book
+                          book={book}
+                          changeShelf={this.props.changeShelf}
+                        />
                       </li>
                     ))}
                 </ol>
@@ -43,7 +46,11 @@ class MainPage extends Component {
                     .filter(book => book.shelf === "wantToRead")
                     .map(book => (
                       <li key={book.id}>
-                        <Book book={book} />
+                        {/* PASSING PROPS TO CHILD ELEMENT */}
+                        <Book
+                          book={book}
+                          changeShelf={this.props.changeShelf}
+                        />
                       </li>
                     ))}
                 </ol>
@@ -57,7 +64,8 @@ class MainPage extends Component {
                 <ol className="books-grid">
                   {books.filter(book => book.shelf === "read").map(book => (
                     <li key={book.id}>
-                      <Book book={book} />
+                      {/* PASSING PROPS TO CHILD ELEMENT */}
+                      <Book book={book} changeShelf={this.props.changeShelf} />
                     </li>
                   ))}
                 </ol>
