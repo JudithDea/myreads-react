@@ -17,11 +17,15 @@ class SearchPage extends Component {
     this.setBookSearch(query);
   };
 
-  //   IF THERE WAS BUT NOW IS NO QUERY, bookSEARCH NEEDS TO BE AN EMPTY ARRAY
+  //   IF NO RESULT OR PREVIOUS SEARCH IS NOW EMPTY, bookSEARCH NEEDS TO BE EMPTY ARRAY
   setBookSearch = query => {
     if (query) {
       BooksAPI.search(query).then(bookSearch => {
-        this.setState({ bookSearch });
+        if (bookSearch.error || !bookSearch) {
+          this.setState({ bookSearch: [] });
+        } else {
+          this.setState({ bookSearch });
+        }
       });
     } else {
       this.setState({ bookSearch: [] });
