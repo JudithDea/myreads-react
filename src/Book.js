@@ -3,6 +3,10 @@ import React, { Component } from "react";
 class Book extends Component {
   render() {
     const { book } = this.props; /* DESTRUCTURING */
+
+    // IN CASE A BOOK HAS NO THUMBNAIL
+    const noThumbnail = "";
+
     return (
       <div className="book">
         <div className="book-top">
@@ -12,7 +16,11 @@ class Book extends Component {
               width: 128,
               height: 193,
               /* NOT REALLY *BACKGROUND* BUT THUMBNAIL, URL SHOULD READ LIKE: url("http://etc") */
-              backgroundImage: `url("${book.imageLinks.thumbnail}")`
+              backgroundImage: `url("${
+                this.props.book.imageLinks
+                  ? this.props.book.imageLinks.thumbnail
+                  : noThumbnail
+              }")`
             }}
           />
           <div className="book-shelf-changer">

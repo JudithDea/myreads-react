@@ -11,6 +11,7 @@ class SearchPage extends Component {
     bookSearch: []
   };
 
+  //   USER TYPES QUERY, SEARCH RUNS, RESULT IS SET IN bookSEARCH STATE
   updateQuery = query => {
     this.setState({ query });
     this.setBookSearch(query);
@@ -21,12 +22,6 @@ class SearchPage extends Component {
       this.setState({ bookSearch });
     });
   };
-
-  // if (this.state.query) {
-  //     const match = new RegExp(escapeRegExp(this.state.query), "i");
-  //   } else {
-  //     showingContacts = contacts;
-  //   }
 
   render() {
     return (
