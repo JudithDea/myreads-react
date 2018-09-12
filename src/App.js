@@ -42,7 +42,15 @@ class BooksApp extends React.Component {
           )}
         />
         {/* SEARCH PAGE */}
-        <Route path="/search" render={({ history }) => <SearchPage />} />
+        <Route
+          path="/search"
+          render={({ history }) => (
+            <SearchPage
+              books={this.state.books}
+              changeShelf={this.changeShelf}
+            />
+          )}
+        />
       </div>
     );
   }
