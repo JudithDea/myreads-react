@@ -17,12 +17,16 @@ class SearchPage extends Component {
     this.setBookSearch(query);
   };
 
+  //   IF THERE IS NO QUERY, bookSEARCH NEEDS TO BE NULL OR IT IS UNDEFINED WHEN EMPTY
   setBookSearch = query => {
-    BooksAPI.search(query).then(bookSearch => {
-      this.setState({ bookSearch });
-    });
+    if (query) {
+      BooksAPI.search(query).then(bookSearch => {
+        this.setState({ bookSearch });
+      });
+    } else {
+      this.setState({ bookSearch: null });
+    }
   };
-
   render() {
     return (
       <div className="search-books">
