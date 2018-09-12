@@ -4,7 +4,7 @@ class Book extends Component {
   render() {
     const { book } = this.props; /* DESTRUCTURING */
 
-    // IN CASE A BOOK HAS NO THUMBNAIL
+    // IN CASE A BOOK HAS NO THUMBNAIL OR AUTHORS
     const noThumbnail = "";
 
     return (
@@ -17,8 +17,8 @@ class Book extends Component {
               height: 193,
               /* NOT REALLY *BACKGROUND* BUT THUMBNAIL, URL SHOULD READ LIKE: url("http://etc") */
               backgroundImage: `url("${
-                this.props.book.imageLinks
-                  ? this.props.book.imageLinks.thumbnail
+                book.imageLinks
+                  ? book.imageLinks.thumbnail || book.authors
                   : noThumbnail
               }")`
             }}
