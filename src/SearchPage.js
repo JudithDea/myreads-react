@@ -31,6 +31,7 @@ class SearchPage extends Component {
       this.setState({ bookSearch: [] });
     }
   };
+
   render() {
     return (
       <div className="search-books">
