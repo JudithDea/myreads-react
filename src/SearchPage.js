@@ -2,27 +2,33 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import escapeRegExp from "escape-string-regexp";
 import Book from "./Book";
+import * as BooksAPI from "./BooksAPI";
+import PropTypes from "prop-types";
 
 class SearchPage extends Component {
   state = {
-    query: ""
+    query: "",
+    bookSearch: []
   };
 
   updateQuery = query => {
     this.setState({ query });
+    this.setBookSearch(query);
   };
 
+  setBookSearch = query => {
+    BooksAPI.search(query).then(bookSearch => {
+      this.setState({ bookSearch });
+    });
+  };
+
+  // if (this.state.query) {
+  //     const match = new RegExp(escapeRegExp(this.state.query), "i");
+  //   } else {
+  //     showingContacts = contacts;
+  //   }
+
   render() {
-    const { query, books } = this.state;
-
-    // let showingBooks;
-    // if (query) {
-    //   const match = new RegExp(escapeRegExp(query), "i");
-    //   showingBooks = books.filter(book => match.test(book));
-    // } else {
-    //   showingBooks = books;
-    // }
-
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -41,12 +47,13 @@ class SearchPage extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {/* <li>{<Book book={book} />}</li> */}
+            {this.state.bookSearch.map(bookSearch => (
+              <li key={bookSearch.id}>{<Book book={bookSearch} />}</li>
+            ))}
           </ol>
         </div>
       </div>
     );
   }
 }
-
 export default SearchPage;
