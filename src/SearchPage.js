@@ -50,11 +50,20 @@ class SearchPage extends Component {
         <div className="search-books-results">
           <ol className="books-grid">
             {this.state.bookSearch.map(bookSearch => {
+              let noShelf = "none";
+
+              // COMPARE BOOKS FROM MAIN PAGE WITH BOOKS FROM SEARCH TO ASSIGN SHELF IF APPLICABLE
+              this.props.books.map(
+                book =>
+                  book.id === bookSearch.id ? (noShelf = book.shelf) : ""
+              );
+
               return (
                 <li key={bookSearch.id}>
                   <Book
                     book={bookSearch}
                     changeShelf={this.props.changeShelf}
+                    currentShelf={noShelf}
                   />
                 </li>
               );
