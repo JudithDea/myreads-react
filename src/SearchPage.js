@@ -19,11 +19,9 @@ class SearchPage extends Component {
   setBookSearch = query => {
     if (query) {
       BooksAPI.search(query).then(bookSearch => {
-        if (bookSearch.error || !bookSearch) {
-          this.setState({ bookSearch: [] });
-        } else {
-          this.setState({ bookSearch });
-        }
+        bookSearch.error || !bookSearch
+          ? this.setState({ bookSearch: [] })
+          : this.setState({ bookSearch });
       });
     } else {
       this.setState({ bookSearch: [] });
