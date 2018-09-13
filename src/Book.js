@@ -6,7 +6,6 @@ class Book extends Component {
 
     // IN CASE A BOOK HAS NO THUMBNAIL OR AUTHORS
     const noThumbnail = "";
-
     return (
       <div className="book">
         <div className="book-top">
@@ -26,7 +25,8 @@ class Book extends Component {
           <div className="book-shelf-changer">
             <select
               onChange={e => this.props.changeShelf(book, e.target.value)}
-              value={book.shelf}
+              value={this.props.currentShelf}
+              id={book.id}
             >
               <option value="move" disabled>
                 Move to...

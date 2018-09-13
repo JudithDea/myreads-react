@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import escapeRegExp from "escape-string-regexp";
 import Book from "./Book";
 import * as BooksAPI from "./BooksAPI";
-import PropTypes from "prop-types";
 
 class SearchPage extends Component {
   state = {
@@ -51,16 +49,16 @@ class SearchPage extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {this.state.bookSearch.map(bookSearch => (
-              <li key={bookSearch.id}>
-                {
+            {this.state.bookSearch.map(bookSearch => {
+              return (
+                <li key={bookSearch.id}>
                   <Book
                     book={bookSearch}
                     changeShelf={this.props.changeShelf}
                   />
-                }
-              </li>
-            ))}
+                </li>
+              );
+            })}
           </ol>
         </div>
       </div>

@@ -13,7 +13,6 @@ class MainPage extends Component {
           <h1>MyReads</h1>
         </div>
 
-        {/* CONTAINER */}
         <div className="list-books-content">
           <div>
             {/* BOOKSHELF CURRENTLY READING */}
@@ -30,6 +29,7 @@ class MainPage extends Component {
                         <Book
                           book={book}
                           changeShelf={this.props.changeShelf}
+                          currentShelf={"currentlyReading"}
                         />
                       </li>
                     ))}
@@ -50,6 +50,7 @@ class MainPage extends Component {
                         <Book
                           book={book}
                           changeShelf={this.props.changeShelf}
+                          currentShelf={"wantToRead"}
                         />
                       </li>
                     ))}
@@ -65,7 +66,11 @@ class MainPage extends Component {
                   {books.filter(book => book.shelf === "read").map(book => (
                     <li key={book.id}>
                       {/* PASSING PROPS TO CHILD ELEMENT */}
-                      <Book book={book} changeShelf={this.props.changeShelf} />
+                      <Book
+                        book={book}
+                        changeShelf={this.props.changeShelf}
+                        currentShelf={"read"}
+                      />
                     </li>
                   ))}
                 </ol>
