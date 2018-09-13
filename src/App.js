@@ -35,8 +35,7 @@ class BooksApp extends React.Component {
       <div className="app">
         {/* MAIN PAGE */}
         <Route
-          exact
-          path="/"
+          exact path="/"
           render={() => (
             /* PASSING PROPS TO CHILD ELEMENT */
             <MainPage books={books} changeShelf={this.changeShelf} />
