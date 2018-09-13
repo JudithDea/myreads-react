@@ -4,7 +4,7 @@ import Book from "./Book";
 
 class MainPage extends Component {
   render() {
-    const { books } = this.props; /* DESTRUCTURING */
+    const { books, changeShelf } = this.props; /* DESTRUCTURING */
     console.log(this.props.books);
     return (
       <div className="list-books">
@@ -28,7 +28,7 @@ class MainPage extends Component {
                         {/* PASSING PROPS TO CHILD ELEMENT */}
                         <Book
                           book={book}
-                          changeShelf={this.props.changeShelf}
+                          changeShelf={changeShelf}
                           currentShelf="currentlyReading"
                         />
                       </li>
@@ -49,7 +49,7 @@ class MainPage extends Component {
                         {/* PASSING PROPS TO CHILD ELEMENT */}
                         <Book
                           book={book}
-                          changeShelf={this.props.changeShelf}
+                          changeShelf={changeShelf}
                           currentShelf="wantToRead"
                         />
                       </li>
@@ -68,7 +68,7 @@ class MainPage extends Component {
                       {/* PASSING PROPS TO CHILD ELEMENT */}
                       <Book
                         book={book}
-                        changeShelf={this.props.changeShelf}
+                        changeShelf={changeShelf}
                         currentShelf="read"
                       />
                     </li>

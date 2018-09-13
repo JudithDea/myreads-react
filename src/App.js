@@ -29,6 +29,7 @@ class BooksApp extends React.Component {
   };
 
   render() {
+    const { books } = this.state;
     // console.log(this.state.books);
     return (
       <div className="app">
@@ -38,17 +39,14 @@ class BooksApp extends React.Component {
           path="/"
           render={() => (
             /* PASSING PROPS TO CHILD ELEMENT */
-            <MainPage books={this.state.books} changeShelf={this.changeShelf} />
+            <MainPage books={books} changeShelf={this.changeShelf} />
           )}
         />
         {/* SEARCH PAGE */}
         <Route
           path="/search"
           render={({ history }) => (
-            <SearchPage
-              books={this.state.books}
-              changeShelf={this.changeShelf}
-            />
+            <SearchPage books={books} changeShelf={this.changeShelf} />
           )}
         />
       </div>
