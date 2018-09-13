@@ -1,17 +1,16 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Book from "./Book";
+import Header from "./Header";
+import Footer from "./Footer";
 
 class MainPage extends Component {
   render() {
     const { books, changeShelf } = this.props; /* DESTRUCTURING */
-    console.log(this.props.books);
+    // console.log(this.props.books);
     return (
       <div className="list-books">
         {/* HEADER */}
-        <div className="list-books-title">
-          <h1>MyReads</h1>
-        </div>
+        <Header />
 
         <div className="list-books-content">
           <div>
@@ -80,9 +79,7 @@ class MainPage extends Component {
         </div>
 
         {/* SEARCH */}
-        <div className="open-search">
-          <Link to="/search">Add a book</Link>
-        </div>
+        <Footer />
       </div>
     );
   }
